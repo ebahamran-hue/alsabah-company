@@ -1,5 +1,7 @@
 import "../globals.css";
+
 import { Cairo } from "next/font/google";
+
 import { NextIntlClientProvider } from "next-intl";
 
 const cairo = Cairo({
@@ -7,34 +9,8 @@ const cairo = Cairo({
 });
 
 export const metadata = {
-  metadataBase: new URL("https://alsabah.com"),
-
-  title: {
-    default: "شركة الصباح",
-    template: "%s | شركة الصباح",
-  },
-
-  description:
-    "شركة الصباح للتبريد والتكييف داخل المملكة العربية السعودية",
-
-  keywords: [
-    "شركة الصباح",
-    "تبريد",
-    "تكييف",
-    "ثلاجات",
-    "السعودية",
-    "جدة",
-  ],
-
-  openGraph: {
-    title: "شركة الصباح",
-    description:
-      "أفضل خدمات التبريد والتكييف",
-    url: "https://alsabah.com",
-    siteName: "Al Sabah",
-    locale: "ar_SA",
-    type: "website",
-  },
+  title: "شركة الصباح",
+  description: "شركة الصباح الرسمية",
 };
 
 export default async function LocaleLayout({
@@ -42,7 +18,7 @@ export default async function LocaleLayout({
   params,
 }) {
   const messages = (
-    await import(`../../../messages/${params.locale}.json`)
+    await import(`../../messages/${params.locale}.json`)
   ).default;
 
   return (

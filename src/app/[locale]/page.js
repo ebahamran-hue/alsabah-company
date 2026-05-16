@@ -1,21 +1,35 @@
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import CircleMenu from "@/components/CircleMenu";
-import WhatsAppButton from "@/components/WhatsAppButton";
 import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
+
+import { useTranslations } from "next-intl";
 
 export default function Home({ params }) {
+  const locale = params.locale;
+
+  const t = useTranslations("Home");
+
   return (
-    <main className="bg-black min-h-screen">
-      <Header locale={params.locale} />
+    <main className="min-h-screen bg-gradient-to-b from-black via-zinc-900 to-black text-white">
+      <Header locale={locale} />
 
-      <HeroSection />
+      <HeroSection
+        company={t("company")}
+        subtitle={t("subtitle")}
+      />
 
-      <CircleMenu locale={params.locale} />
-
-      <WhatsAppButton />
+      <CircleMenu
+        locale={locale}
+        terms={t("terms")}
+        offers={t("offers")}
+        contact={t("contact")}
+      />
 
       <Footer />
+
+      <WhatsAppButton />
     </main>
   );
 }
