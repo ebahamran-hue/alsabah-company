@@ -4,25 +4,101 @@ import Link from "next/link";
 
 export default function Header({ locale }) {
   return (
-    <header className="w-full border-b border-white/10 backdrop-blur-xl sticky top-0 z-50 bg-black/40">
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-5">
-        <h1 className="text-3xl font-black">
-          شركة الصباح
-        </h1>
+    <header className="
+      fixed
+      top-0
+      left-0
+      w-full
+      z-50
+      px-6
+      pt-6
+    ">
+      <div className="
+        max-w-7xl
+        mx-auto
 
-        <div className="flex gap-3">
+        bg-black/40
+        backdrop-blur-2xl
+
+        border
+        border-white/10
+
+        rounded-3xl
+
+        px-8
+        py-5
+
+        flex
+        items-center
+        justify-between
+      ">
+        {/* LOGO */}
+
+        <div>
+          <h1 className="
+            text-2xl
+            md:text-3xl
+            font-black
+          ">
+            شركة الصباح
+          </h1>
+
+          <p className="
+            text-zinc-500
+            mt-1
+            text-sm
+          ">
+            Al Sabah Company
+          </p>
+        </div>
+
+        {/* LANG */}
+
+        <div className="
+          flex
+          items-center
+          bg-white/5
+          rounded-full
+          p-1
+        ">
           <Link
             href="/ar"
-            className="bg-white text-black px-4 py-2 rounded-full font-bold"
+            className={`
+              px-5
+              py-2
+              rounded-full
+              text-sm
+              font-bold
+              transition
+
+              ${
+                locale === "ar"
+                  ? "bg-white text-black"
+                  : "text-zinc-400"
+              }
+            `}
           >
             عربي
           </Link>
 
           <Link
             href="/en"
-            className="bg-yellow-400 text-black px-4 py-2 rounded-full font-bold"
+            className={`
+              px-5
+              py-2
+              rounded-full
+              text-sm
+              font-bold
+              transition
+
+              ${
+                locale === "en"
+                  ? "bg-yellow-400 text-black"
+                  : "text-zinc-400"
+              }
+            `}
           >
-            English
+            EN
           </Link>
         </div>
       </div>

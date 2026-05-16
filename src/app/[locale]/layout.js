@@ -2,11 +2,19 @@ import "../globals.css";
 
 import { Cairo } from "next/font/google";
 
-import { NextIntlClientProvider } from "next-intl";
+import { notFound } from "next/navigation";
 
 const cairo = Cairo({
   subsets: ["arabic"],
 });
+
+const locales = ["ar", "en"];
+
+export function generateStaticParams() {
+  return locales.map((locale) => ({
+    locale,
+  }));
+}
 
 export const metadata = {
   title: "شركة الصباح",
@@ -19,9 +27,9 @@ export default async function LocaleLayout({
 }) {
   const { locale } = await params;
 
-  const messages = (
-    await import(`../../messages/${locale}.json`)
-  ).default;
+  if (!locales.includes(locale)) {
+    notFound();
+  }
 
   return (
     <html
@@ -29,9 +37,7 @@ export default async function LocaleLayout({
       dir={locale === "ar" ? "rtl" : "ltr"}
     >
       <body className={cairo.className}>
-        <NextIntlClientProvider messages={messages}>
-          {children}
-        </NextIntlClientProvider>
+        {children}
       </body>
     </html>
   );
