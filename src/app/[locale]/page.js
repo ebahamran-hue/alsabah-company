@@ -102,6 +102,7 @@ export default function Home() {
       <footer className="mt-32 border-t border-white/10 py-8 text-center text-zinc-400">
         © 2026 Al Sabah Company — All Rights Reserved
       </footer>
+      <WhatsAppButton />
     </main>
   );
 }
