@@ -4,12 +4,17 @@ import CircleMenu from "@/components/CircleMenu";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
-export default function Home({ params }) {
-  const locale = params.locale;
+export default async function Home({
+  params,
+}) {
+  const { locale } = await params;
 
-  const t = useTranslations("Home");
+  const t = await getTranslations({
+    locale,
+    namespace: "Home",
+  });
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-black via-zinc-900 to-black text-white">
