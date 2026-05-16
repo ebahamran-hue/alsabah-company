@@ -6,6 +6,37 @@ const cairo = Cairo({
   subsets: ["arabic"],
 });
 
+export const metadata = {
+  metadataBase: new URL("https://alsabah.com"),
+
+  title: {
+    default: "شركة الصباح",
+    template: "%s | شركة الصباح",
+  },
+
+  description:
+    "شركة الصباح للتبريد والتكييف داخل المملكة العربية السعودية",
+
+  keywords: [
+    "شركة الصباح",
+    "تبريد",
+    "تكييف",
+    "ثلاجات",
+    "السعودية",
+    "جدة",
+  ],
+
+  openGraph: {
+    title: "شركة الصباح",
+    description:
+      "أفضل خدمات التبريد والتكييف",
+    url: "https://alsabah.com",
+    siteName: "Al Sabah",
+    locale: "ar_SA",
+    type: "website",
+  },
+};
+
 export default async function LocaleLayout({
   children,
   params,
